@@ -1,6 +1,6 @@
 /* An example of code that should get flagged by CodeGuru */
 
-class LoopExample {
+class GuruExample {
     public static void main(String args[]) {
         int len = Integer.parseInt(args[1]);
         char[] thing = new char[len];
