@@ -1,12 +1,14 @@
 /* An example of code that should get flagged by CodeGuru */
 import java.util.HashMap;
 
+class Whatsit {
+    public int doit(int val) {
+        return 12345;
+    }
+}
+
 class GuruExample {
     public static void main(String args[]) {
-        HashMap<String, String> foo;
-
-        foo.put("thing", "thing");
-
         int len = Integer.parseInt(args[1]);
         char[] thing = new char[len];
 
@@ -15,6 +17,17 @@ class GuruExample {
         }
 
         System.out.println("Did a thing");
+
+        HashMap<String, Whatsit> thang = new HashMap<String, Whatsit>();
+        foo(thang);
+    }
+
+    public static synchronized void foo(HashMap<String, Whatsit> thing) {
+        Whatsit whatsit = thing.get("banana");
+        if (whatsit != null) {
+            int result = whatsit.doit(123);
+            thing.put("banana", whatsit);
+        }
     }
 }
 
